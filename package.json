@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index",
+    "start": "node index",
     "test": "echo ' '",
-    "front": ""
+    "dev": "nodemon index"
   },
   "keywords": [],
   "author": "",

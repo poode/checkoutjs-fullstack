@@ -5,9 +5,9 @@ const cors = require('cors');
 
 const { getUserData } = require('./service');
 
-const port = 3001;
 const app = express();
 config();
+const port = process.env.PORT || 3001;
 
 app.use('/', express.static('./public'));
 app.use(cors());
@@ -22,8 +22,12 @@ app.get('/', (req, res, next) => {
 
 app.post('/get-user-data', async (req, res, next) => {
   console.log(req.body)
-  const respose = await getUserData({sandbox: true, secretKey: process.env.SECRET_KEY, requestBody: req.body });
-  res.json(respose);
+  try {
+    const respose = await getUserData({sandbox: true, secretKey: process.env.SECRET_KEY, requestBody: req.body });
+    res.json(respose);
+  } catch (error) {
+    res.status(500).json({ message: 'SomeThing Went Wrong' });
+  }
 });
 
 

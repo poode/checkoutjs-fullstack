@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:3001/get-user-data/';
+const URL = document.URL.split('//');
+const API_URL = `${URL[0]}//${URL[1]}get-user-data/`; // 'http://localhost:3001/get-user-data/';
 const getUserData = async function getUserData({
   amount,
   currency,
